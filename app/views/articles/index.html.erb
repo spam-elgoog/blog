@@ -1,0 +1,39 @@
+<%= link_to 'New article', new_article_path %>
+
+<div id="resp-table">
+
+  <div id=“resp-table-caption”>
+    <h2>Current Articles</h2><br><br>
+  </div>
+  <div id=“resp-table-header”>
+    
+    <div class=“table-header-cell”>
+       <%# <h4>Title</h4> %>
+    </div>
+
+    <div class=“table-header-cell”>
+      <%# <h4>Text</h4> %>
+    </div>
+
+  </div>
+  <div id=“resp-table-body”>
+    
+
+      <% @articles.each do |article|%>
+      <div class=“resp-table-row”>
+        <div class=“table-body-cell”><mark class="article-title"><%= article.title %></mark></div>
+        <div class=“table-body-cell”><%= article.text %><br>
+        <div class=“table-body-cell”><i>Created on <%= article.created_at %></i><br><br>
+            <%= link_to 'View', article_path(article) %>&nbsp &nbsp
+            <%= link_to 'Edit', edit_article_path(article) %>&nbsp &nbsp
+            <%= link_to 'Delete', article_path(article), 
+                method: :delete,
+                data: {confirm: 'Are you certain?' } %><br><br>
+        </div>  
+        
+      </div>
+      <% end %>
+  </div>
+
+  
+<div>

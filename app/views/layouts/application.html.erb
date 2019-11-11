@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <style>
+      h1 {
+        color: red;
+      }
+       /* add inline styles here  */
+    </style>
+  </head>
+
+  <body id="home" class="open-left">
+  <div id="offcanvas-left" class="hide">
+    <ul>
+      <li><a href="#">Create Article</a></li>
+      <li><a href="#">Add comment</a></li>
+      <li><a href="#">Go home</a></li>
+    </ul>
+  </div>
+  <div class="togglebar">
+    <div class="toggle" onclick="toggleLeft()">
+      <i class="fa fa-bars"></i>
+    </div>
+  </div>
+  <div >
+    <%= yield %>
+  </div>
+  </body>
+</html>
