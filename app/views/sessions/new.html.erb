@@ -1,0 +1,21 @@
+
+<section class="logon_container">
+  <div style="width: 400px">
+    <h1 id="logonTitle">Login</h1>
+    <p style="color: green"><%= flash[:notice] %></p><br/>
+
+    <%=form_with url: sessions_path do |f|%>
+    <div>
+      <%= f.label :user_name %><br/>
+      <%= f.text_field :user_name  %>
+    </div>
+    <div>
+      <%= f.label :password %><br/>
+      <%= f.password_field :password %>
+    </div>
+    <div>
+      <%=f.submit "Log In"%>
+    </div>
+    <% end %>
+  </div>
+</section>

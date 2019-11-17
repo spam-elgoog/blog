@@ -2,7 +2,9 @@
 
 class ArticlesController < ApplicationController
   def index
-    @articles = Article.all
+    # re-ordering aricles based on create at date, with most recently
+    # created articles at the top
+    @articles = Article.all.order(created_at: :desc)
   end
 
   def show

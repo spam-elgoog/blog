@@ -1,4 +1,17 @@
-<%= link_to 'New article', new_article_path %>
+<p style="color: green"><%=flash[:notice]%></p>
+<% if current_user %>
+  <!-- If you're logged in then you can create an article and you 
+       also log out -->
+  <p><%= link_to 'New article', new_article_path %>&nbsp&nbsp&nbsp&nbsp
+  <em>Logged in as <%= current_user.user_name %></em></p>
+  <%= link_to 'Log Out', session_path("current"), method: "delete" %>
+<% else%>
+  <!-- Only Logged in users can edit and create articles -->
+  <%= link_to 'Sign up', new_user_path %>&nbsp&nbsp
+  <!-- this rout was remapped in routes.rb from new_session_path to this 
+       now displays in browser as /login -->
+  <%= link_to 'Log In', login_path %> 
+<% end %>
 
 <div id="resp-table">
 
@@ -25,10 +38,12 @@
         <div class=“table-body-cell”><%= article.text %><br>
         <div class=“table-body-cell”><i>Created on <%= article.created_at %></i><br><br>
             <%= link_to 'View', article_path(article) %>&nbsp &nbsp
+            <% if current_user %>
             <%= link_to 'Edit', edit_article_path(article) %>&nbsp &nbsp
             <%= link_to 'Delete', article_path(article), 
                 method: :delete,
                 data: {confirm: 'Are you certain?' } %><br><br>
+            <% end %>
         </div>  
         
       </div>
